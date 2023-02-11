@@ -39,7 +39,7 @@ export default async function Blog({ params }) {
         <div>{post.date}</div>
         <div>
           <div
-            className="prose"
+            className="prose prose-invert"
             dangerouslySetInnerHTML={{ __html: post.body.html }}
           />
         </div>
