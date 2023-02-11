@@ -33,7 +33,7 @@ export async function generateMetadata(params: { slug: string }) {
   };
 }
 
-export default async function Blog(params: { slug: string }) {
+export default async function Blog({ params }: { params: { slug: string } }) {
   const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
