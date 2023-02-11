@@ -1,3 +1,4 @@
+import Balancer from 'react-wrap-balancer';
 import { allPosts } from 'contentlayer/generated';
 
 export async function generateStaticParams() {
@@ -31,11 +32,16 @@ export default async function Blog({ params }) {
 
   return (
     <section>
-      <h1>{post.title}</h1>
+      <h1>
+        <Balancer>{post.title}</Balancer>
+      </h1>
       <div>
         <div>{post.date}</div>
         <div>
-          <div dangerouslySetInnerHTML={{ __html: post.body.html }} />
+          <div
+            className="prose"
+            dangerouslySetInnerHTML={{ __html: post.body.html }}
+          />
         </div>
       </div>
     </section>
