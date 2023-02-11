@@ -16,9 +16,9 @@ export type Post = {
   title: string
   description: string
   date: string
-  /** MDX file body */
-  body: MDX
-  slug: string
+  /** Markdown file body */
+  body: Markdown
+  url: string
 }  
 
 /** Nested types */

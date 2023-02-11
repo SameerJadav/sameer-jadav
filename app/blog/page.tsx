@@ -1,10 +1,5 @@
 import Link from 'next/link';
-import { allPosts } from 'contentlayer/generated';
-
-export const metadata = {
-  title: 'Blog',
-  description: 'Read my thoughts on software development, design, and more.',
-};
+import { allPosts, Post } from 'contentlayer/generated';
 
 export default function Home() {
   return (
@@ -17,7 +12,7 @@ export default function Home() {
           return 1;
         })
         .map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
+          <Link key={post.url} href={`/blog/${post.url}`}>
             {post.title}
           </Link>
         ))}
