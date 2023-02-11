@@ -17,7 +17,7 @@ export default function Home() {
           return 1;
         })
         .map((post) => (
-          <Link key={post._id} href={post.url}>
+          <Link key={post.slug} href={`/blog/${post.slug}`}>
             {post.title}
           </Link>
         ))}
