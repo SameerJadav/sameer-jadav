@@ -1,5 +1,24 @@
 import Link from 'next/link';
-import { allPosts, Post } from 'contentlayer/generated';
+import { allPosts } from 'contentlayer/generated';
+
+export const metadata = {
+  title: 'Blog',
+  description:
+    'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+  openGraph: {
+    title: 'Blog',
+    description:
+      'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+    siteName: 'Sameer Jadav',
+    locale: 'en-US',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Blog',
+    description:
+      'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+  },
+};
 
 export default function Home() {
   return (

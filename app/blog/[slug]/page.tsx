@@ -6,6 +6,26 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }) {
+  const post = allPosts.find((post) => post.url === params.slug);
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      siteName: 'Sameer Jadav',
+      locale: 'en-US',
+      type: 'article',
+    },
+    twitter: {
+      title: post.title,
+      description: post.description,
+    },
+  };
+}
+
 export default async function Blog({ params }) {
   const post = allPosts.find((post) => post.url === params.slug);
 
