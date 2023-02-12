@@ -22,7 +22,8 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <main className="p-4">
+      <h1 className="mb-6 text-4xl font-bold">Blog</h1>
       {allPosts
         .sort((a, b) => {
           if (new Date(a.date) > new Date(b.date)) {
@@ -32,7 +33,7 @@ export default function Home() {
         })
         .map((post) => (
           <Link key={post.url} href={`/blog/${post.url}`}>
-            {post.title}
+            <p className="text-lg">{post.title}</p>
           </Link>
         ))}
     </main>
