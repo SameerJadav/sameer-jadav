@@ -32,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-[#111010] text-neutral-100">
-      <body className="antialiased max-w-3xl mx-auto mt-8 md:mt-20">
+      <body className="antialiased max-w-3xl mx-auto mt-8 md:mt-20  tracking-wide">
         {children}
       </body>
     </html>

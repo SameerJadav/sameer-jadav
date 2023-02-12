@@ -31,19 +31,17 @@ export default async function Blog({ params }) {
   const post = allPosts.find((post) => post.url === params.slug);
 
   return (
-    <section>
-      <h1>
-        <Balancer>{post.title}</Balancer>
-      </h1>
-      <div>
-        <div>{post.date}</div>
-        <div>
-          <div
-            className="prose prose-invert"
-            dangerouslySetInnerHTML={{ __html: post.body.html }}
-          />
-        </div>
-      </div>
-    </section>
+    <article>
+      <header>
+        <h1>
+          <Balancer>{post.title}</Balancer>
+        </h1>
+        <time className="font-mono text-gray-400">{post.date}</time>
+      </header>
+      <section
+        className="prose prose-invert prose-p:text-neutral-100"
+        dangerouslySetInnerHTML={{ __html: post.body.html }}
+      />
+    </article>
   );
 }
