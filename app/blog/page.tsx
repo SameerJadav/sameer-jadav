@@ -32,8 +32,14 @@ export default function Home() {
           return 1;
         })
         .map((post) => (
-          <Link key={post.url} href={`/blog/${post.url}`}>
+          <Link className="w-min" key={post.url} href={`/blog/${post.url}`}>
             <p className="text-lg">{post.title}</p>
+            <div className="flex gap-2 items-center mb-4 md:mb-6 text-sm">
+              <time className="font-mono text-neutral-500 shrink-0">
+                {post.date}
+              </time>
+              <div className="bg-neutral-800 w-full h-[0.05rem]" />
+            </div>
           </Link>
         ))}
     </main>

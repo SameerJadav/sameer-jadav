@@ -2,21 +2,14 @@
 title: 'Simplifying Your Content Management with Next.js and Contentlayer'
 description: ''
 keywords: 'Next.js 13, Contentlayer'
-date: 'Februaru 17, 2023'
+date: 'February 17, 2023'
 ---
-
-## Contentlayer
 
 Contentlayer turns your content into data. And It makes it so easy to work with `.md` and `.mdx` files. You just install contentlayer and do some configuration and you are done. you can start writing in your md/mdx files and everything works. contentlayer adds types to your data automatically, so your data is always type-safe.
 
 ## Create a Next.js app
 
-We are going to use the new `appDir` in this setup. `--experimental-app` this flag will create a Next.js app with an `appDir`. Everything in this app directory is a server component by default.
-
-<aside>
-💡 Use pnpm to get faster results and save a lot of space on your PC. Pnpm holds all the packages at a global (centralized) store and uses them if needed by other projects by creating hard links to them.
-
-</aside>
+We are going to use the new `appDir` in this setup. `--experimental-app` this flag will create a Next.js app with an `appDir`. Everything in this app directory is a server component by default. when your Next app is created clean it up, and remove all the unnecessary code.
 
 ```bash
 npx create-next-app@latest --experimental-app
@@ -25,8 +18,6 @@ yarn create next-app --experimental-app
 # or
 pnpm create next-app --experimental-app
 ```
-
-when your Next app is created clean it up, and remove all the unnecessary code.
 
 ## Install Contentlayer
 
@@ -44,7 +35,7 @@ pnpm add contentlayer next-contentlayer
 
 To integrate contentlayer into `next dev` and `next build` process we need to wrap `nextConfig` with `withContentlayer` method.
 
-```jsx
+```js
 // next.config.js
 
 const { withContentlayer } = require('next-contentlayer');
@@ -61,7 +52,7 @@ module.exports = withContentlayer(nextConfig);
 
 Then we need to make some changes in our `tsconfig.json` or `jsconfig.json` file.
 
-```tsx
+```ts
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -77,7 +68,7 @@ Then we need to make some changes in our `tsconfig.json` or `jsconfig.json` fil
 
 Now that we have everything installed, we can begin defining our document schema. This will help contentlayer convert our content to data, which we can later use in our blog. Create a new file in root of your project called `contentlayer.config.js` and place the following content in it.
 
-```tsx
+```js
 // contentlayer.config.js
 
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
@@ -146,48 +137,47 @@ date: '2022-02-22'
 
 Now we need to replace the homepage(`app/page.tsx`) to this:
 
-```markdown
+```tsx
 import Link from 'next/link';
 import { allPosts } from 'contentlayer/generated';
 
 export const metadata = {
-title: 'Blog',
-description:
-'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
-openGraph: {
-title: 'Blog',
-description:
-'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
-siteName: 'Sameer Jadav',
-locale: 'en-US',
-type: 'website',
-},
-twitter: {
-title: 'Blog',
-description:
-'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
-},
+  title: 'Blog',
+  description:
+    'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+  openGraph: {
+    title: 'Blog',
+    description:
+      'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+    siteName: 'Sameer Jadav',
+    locale: 'en-US',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Blog',
+    description:
+      'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+  },
 };
 
 export default function Home() {
-return (
-
-<main className="p-4">
-<h1 className="mb-6 text-4xl font-bold">Blog</h1>
-{allPosts
-.sort((a, b) => {
-if (new Date(a.date) > new Date(b.date)) {
-return -1;
-}
-return 1;
-})
-.map((post) => (
-<Link key={post.url} href={`/blog/${post.url}`}>
-<p className="text-lg">{post.title}</p>
-</Link>
-))}
-</main>
-);
+  return (
+    <main className="p-4">
+      <h1 className="mb-6 text-4xl font-bold">Blog</h1>
+      {allPosts
+        .sort((a, b) => {
+          if (new Date(a.date) > new Date(b.date)) {
+            return -1;
+          }
+          return 1;
+        })
+        .map((post) => (
+          <Link key={post.url} href={`/blog/${post.url}`}>
+            <p className="text-lg">{post.title}</p>
+          </Link>
+        ))}
+    </main>
+  );
 }
 ```
 
@@ -201,54 +191,53 @@ We are importing all of our posts from `contentlayer/generated` and creating lin
 
 Now we will render every single blog posts in it’s own page. We need to create a slug page. Create a file like this `[slug]/page.tsx` and place the following content in it.
 
-```markdown
+```tsx
 import Balancer from 'react-wrap-balancer';
 import { allPosts } from 'contentlayer/generated';
 
 export async function generateStaticParams() {
-return allPosts.map((post) => ({
-slug: post.url,
-}));
+  return allPosts.map((post) => ({
+    slug: post.url,
+  }));
 }
 
 export async function generateMetadata({ params }) {
-const post = allPosts.find((post) => post.url === params.slug);
+  const post = allPosts.find((post) => post.url === params.slug);
 
-return {
-title: post.title,
-description: post.description,
-openGraph: {
-title: post.title,
-description: post.description,
-siteName: 'Sameer Jadav',
-locale: 'en-US',
-type: 'article',
-},
-twitter: {
-title: post.title,
-description: post.description,
-},
-};
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      siteName: 'Sameer Jadav',
+      locale: 'en-US',
+      type: 'article',
+    },
+    twitter: {
+      title: post.title,
+      description: post.description,
+    },
+  };
 }
 
 export default async function Blog({ params }) {
-const post = allPosts.find((post) => post.url === params.slug);
+  const post = allPosts.find((post) => post.url === params.slug);
 
-return (
-
-<article>
-<header>
-<h1>
-<Balancer>{post.title}</Balancer>
-</h1>
-<time className="font-mono text-gray-400">{post.date}</time>
-</header>
-<section
-className="prose prose-invert prose-p:text-neutral-100"
-dangerouslySetInnerHTML={{ __html: post.body.html }}
-/>
-</article>
-);
+  return (
+    <article>
+      <header>
+        <h1>
+          <Balancer>{post.title}</Balancer>
+        </h1>
+        <time className="font-mono text-gray-400">{post.date}</time>
+      </header>
+      <section
+        className="prose prose-invert prose-p:text-neutral-100"
+        dangerouslySetInnerHTML={{ __html: post.body.html }}
+      />
+    </article>
+  );
 }
 ```
 

@@ -32,12 +32,17 @@ export default async function Blog({ params }) {
   const post = allPosts.find((post) => post.url === params.slug);
 
   return (
-    <article>
+    <article className="p-4">
       <header>
-        <h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-4">
           <Balancer>{post.title}</Balancer>
         </h1>
-        <time className="font-mono text-gray-400">{post.date}</time>
+        <div className="flex gap-2 items-center mb-6 md:mb-8 text-sm">
+          <time className="font-mono text-white bg-neutral-800 p-2 shrink-0 rounded-md">
+            {post.date}
+          </time>
+          <div className="bg-neutral-800 w-full h-[0.05rem]" />
+        </div>
       </header>
       <section
         className="prose prose-invert prose-p:text-neutral-100"
