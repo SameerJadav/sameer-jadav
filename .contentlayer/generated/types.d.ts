@@ -15,6 +15,7 @@ export type Post = {
   type: 'Post'
   title: string
   description: string
+  keywords: string
   date: string
   /** Markdown file body */
   body: Markdown
