@@ -5,11 +5,13 @@ keywords: 'Next.js 13, Contentlayer'
 date: 'February 17, 2023'
 ---
 
-Contentlayer turns your content into data. And It makes it so easy to work with `.md` and `.mdx` files. You just install contentlayer and do some configuration and you are done. you can start writing in your md/mdx files and everything works. contentlayer adds types to your data automatically, so your data is always type-safe.
+Content management can be a tedious and time-consuming task, but what if I told you that there's a tool that can simplify the process and make it a breeze? Introducing Contentlayer, a powerful tool that converts your content into data and makes it easy to work with `.md` and `.mdx` files. With Contentlayer, all you need to do is install and configure it, and you can start writing in your preferred file format. The best part? Contentlayer automatically adds types to your data, ensuring that your content is always type-safe. Say goodbye to the hassle of content management and hello to a more streamlined process with Contentlayer and Next.js.
 
-## Create a Next.js app
+## Setting up a Next.js App
 
-We are going to use the new `appDir` in this setup. `--experimental-app` this flag will create a Next.js app with an `appDir`. Everything in this app directory is a server component by default. when your Next app is created clean it up, and remove all the unnecessary code.
+To create a Next.js app with server components, we'll be utilizing the new appDir feature. Simply add the --experimental-app flag to your command and a new app directory will be created for you. It's worth noting that everything in this directory will be considered a server component by default.
+
+To get started, run any of the following commands:
 
 ```bash
 npx create-next-app@latest --experimental-app
@@ -19,9 +21,11 @@ yarn create next-app --experimental-app
 pnpm create next-app --experimental-app
 ```
 
+Once your Next.js app is created, it's a good idea to clean up any unnecessary code to keep your project organized and efficient.
+
 ## Install Contentlayer
 
-Now we need to install contentlayer and next.js plugin.
+To use Contentlayer, you must install the Contentlayer package and the Next.js plugin. To install these packages, run the following commands:
 
 ```bash
 npm install contentlayer next-contentlayer
@@ -50,7 +54,7 @@ const nextConfig = {
 module.exports = withContentlayer(nextConfig);
 ```
 
-Then we need to make some changes in our `tsconfig.json` or `jsconfig.json` file.
+Additionally, we need to update our tsconfig.json or jsconfig.json file with the following changes:
 
 ```ts
 {
@@ -66,7 +70,7 @@ Then we need to make some changes in our `tsconfig.json` or `jsconfig.json` fil
 
 ### Defining Post schema
 
-Now that we have everything installed, we can begin defining our document schema. This will help contentlayer convert our content to data, which we can later use in our blog. Create a new file in root of your project called `contentlayer.config.js` and place the following content in it.
+Let's start by introducing the importance of defining a Post schema for our blog. This schema will help contentlayer convert our content into data that can be used on our blog. To create this schema, we need to create a new file called contentlayer.config.js in the root of our project and include the following code:
 
 ```js
 // contentlayer.config.js
@@ -104,21 +108,20 @@ export default makeSource({
 });
 ```
 
-This will create a document type called `Post` this document is expected to be a `.md` file that lives in you `post` directory. We will use these properties for SEO. These files will have the following properties:
+This code will define the Post document type, which will represent our blog posts. Each post is expected to be a .md file located in the posts directory. This schema will include the following properties:
 
-- `title` ,`description`, and `keywords`: This will be a string pulled off from the frontmatter of your file.
+- `title`: a required string that will be used as the title of the blog post.
+- `description`: a required string that will be used as the description of the blog post.
+- `date`: a required string that will be used as the date of the blog post.
+- `url`: a computed string that will take the name of the file without extension and will be used as the URL of the blog post.
 
-> **_Note: This `title` will be your `h1` so you should not use any other `h1` ’s._**
-
-- `url`: This is a string that will take the name of the file without extension.
-
-`defineDocumentType()` will define document types and `makeSource()` will convert all the content(`md`) files into data with the `Post` document type.
+It is important to note that the title of the blog post will also be used as the h1 of the blog post, so no other h1 tags should be used in the content. By defining the Post schema, we can easily convert our content into data that can be used on our blog.
 
 ### Add posts
 
-Let’s add some content in our blog post. Create a `post` directory and add all of your posts to it.
+To populate our blog, we need to add some content. Start by creating a new directory called post and add all of your posts there.
 
-Here is an example post, `post/what-is-contentlayer.md`
+For example, here is a sample post titled what-is-contentlayer.md located in the post directory:
 
 ```markdown
 ---
@@ -131,11 +134,11 @@ date: '2022-02-22'
 **Contentlayer makes working with content easy.** It is a content preprocessor that validates and transforms your content into type-safe JSON you can easily import into your application.
 ```
 
-> **_Note: It is very important to start the dev environment at this moment. This will generate a directory named `.contentlayer` this directory will have all of our content in `.json` format. it means that our content is converted to data. That’s awesome_**
+**_Important note: Make sure to start the development environment now. Doing so will generate a .contentlayer directory containing all of our content in .json format. This means that our content has been transformed into data, making it easier to manage._**
 
 ### Blogs page
 
-Now we need to replace the homepage(`app/page.tsx`) to this:
+To showcase all our blog posts, we will replace the homepage (`app/page.tsx`) with the following code:
 
 ```tsx
 import Link from 'next/link';
@@ -181,15 +184,13 @@ export default function Home() {
 }
 ```
 
-Rember all of our post are now data, that means now we can destructure them use them as we please. Now you can see all of your blog posts.
+We import all of our blog posts from contentlayer/generated and display them as links, sorted by date. By destructuring each post object, we can easily access its url and title properties.
 
-We are importing all of our posts from `contentlayer/generated` and creating links for all the posts and sorting them through date.
+Note that we use new Date(b.date) - new Date(a.date) instead of an if statement to sort posts in descending order. We also renamed the component to Blog for clarity. Additionally, we included metadata for SEO purposes using the new metadata format available in next: 13.1.7-canary.5.
 
-> Note: I am using `next: 13.1.7-canary.5` which has improved support for metadata.
+### Creating a Single Blog Post Layout
 
-### Blog layout
-
-Now we will render every single blog posts in it’s own page. We need to create a slug page. Create a file like this `[slug]/page.tsx` and place the following content in it.
+To render each blog post in its own page, we need to create a slug page. This page will use a specific URL format to identify the post. We can create a file called [slug]/page.tsx and place the following content in it:
 
 ```tsx
 import Balancer from 'react-wrap-balancer';
@@ -241,6 +242,8 @@ export default async function Blog({ params }) {
 }
 ```
 
-We are making a new object from `allPosts` which has only one property called `slug`and it is assigned to `post.url` . We are using this object to get the exact blog post that the user has requested. Then we are rendering the title and body of post.
+- The `generateStaticParams()` function creates a new object from allPosts with only one property, slug, and assigns it to post.url. This object is then used to retrieve the requested blog post.
+- The `generateMetadata()` function generates metadata for the blog post, such as the title, description, and social media tags.
+- The `Blog` component renders the post's title, date, and body.
 
-There you have it, we have successfully created a blog app. You can design a UI and make it your own. Start writing your blog and keep learning new things
+Now, you have successfully created a blog app. You can design your own UI and start writing your own blog posts. Keep learning and sharing your knowledge with others.
