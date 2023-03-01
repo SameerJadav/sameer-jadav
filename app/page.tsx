@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { ArrowIcon } from 'components/icons';
 import Link from 'next/link';
 
