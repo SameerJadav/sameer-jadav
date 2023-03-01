@@ -45,7 +45,7 @@ export default async function Blog({ params }) {
         </div>
       </header>
       <section
-        className="prose prose-invert prose-p:text-neutral-100"
+        className="prose prose-invert prose-p:text-neutral-300"
         dangerouslySetInnerHTML={{ __html: post.body.html }}
       />
     </article>
