@@ -31,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="bg-[#010101] text-neutral-400">
-      <body className="antialiased max-w-2xl mx-auto mt-8 md:mt-20  tracking-wide">
+    <html lang="en" className="bg-[#010101] text-neutral-400 font-inter">
+      <body className="antialiased max-w-2xl mx-auto mt-8 md:mt-20">
         {children}
       </body>
     </html>

@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         kaisei: ['Kaisei Opti', 'serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       typography: {
         quoteless: {

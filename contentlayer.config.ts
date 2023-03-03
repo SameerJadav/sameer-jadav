@@ -1,6 +1,8 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -37,6 +39,7 @@ export default makeSource({
   markdown: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
+      rehypeSlug,
       [
         rehypePrettyCode,
         {
@@ -53,6 +56,14 @@ export default makeSource({
           },
           onVisitHighlightedWord(node) {
             node.properties.className = ['word--highlighted'];
+          },
+        },
+      ],
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: ['anchor'],
           },
         },
       ],
