@@ -20,7 +20,7 @@ const navItems = {
 function Logo() {
   return (
     <Link href="/">
-      <Image src="/logo(s).png" alt="logo" width={50} height={50} />
+      <Image src="/logo(s).svg" alt="logo" width={50} height={50} />
     </Link>
   );
 }
