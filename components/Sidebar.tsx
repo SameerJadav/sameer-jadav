@@ -20,7 +20,7 @@ const navItems = {
 function Logo() {
   return (
     <Link href="/">
-      <Image src="/logo(s).svg" alt="logo" width={50} height={50} />
+      <Image src="/logo-n.svg" alt="logo" width={50} height={50} />
     </Link>
   );
 }
@@ -34,7 +34,7 @@ export default function Navbar() {
   return (
     <aside className="lg:w-[150px] lg:flex-shrink-0 lg:mt-7">
       <div className="lg:sticky lg:top-20 flex justify-between items-center lg:block">
-        <div className="ml-2 lg:ml-[12px] mb-2 px-4 lg:px-0 lg:mb-8 space-y-10 flex flex-col lg:flex-row items-start ">
+        <div className="lg:ml-5 mb-2 px-4 lg:px-0 lg:mb-8 space-y-10 flex flex-col lg:flex-row items-start ">
           <Logo />
         </div>
         <nav
