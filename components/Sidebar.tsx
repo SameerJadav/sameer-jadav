@@ -33,7 +33,7 @@ export default function Navbar() {
 
   return (
     <aside className="lg:w-[150px] lg:flex-shrink-0 lg:mt-7">
-      <div className="lg:sticky lg:top-20">
+      <div className="lg:sticky lg:top-20 flex justify-between items-center lg:block">
         <div className="ml-2 lg:ml-[12px] mb-2 px-4 lg:px-0 lg:mb-8 space-y-10 flex flex-col lg:flex-row items-start ">
           <Logo />
         </div>
@@ -50,10 +50,10 @@ export default function Navbar() {
                   key={path}
                   href={path}
                   className={clsx(
-                    'transition-all hover:text-white text-lg py-1 px-2',
+                    'transition-all hover:text-white text-xl py-1 px-2 ml-2',
                     {
                       'text-neutral-400 capitalize': !isActive,
-                      'text-white bg-[#111] rounded-lg font-medium capitalize transition-all duration-300 ease-in-out':
+                      'text-white bg-neutral-900 rounded-lg font-medium capitalize transition-all duration-300 ease-in-out':
                         isActive,
                     }
                   )}
