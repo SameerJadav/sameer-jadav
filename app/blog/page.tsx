@@ -23,7 +23,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="p-4">
-      <h1 className="mb-6 text-4xl font-bold">Blog</h1>
+      <h1 className="mb-6 text-6xl">Blogs</h1>
       {allPosts
         .sort((a, b) => {
           if (new Date(a.date) > new Date(b.date)) {
@@ -32,14 +32,13 @@ export default function Home() {
           return 1;
         })
         .map((post) => (
-          <Link className="w-min" key={post.url} href={`/blog/${post.url}`}>
+          <Link
+            className="hover:text-white mb-4 md:mb-6"
+            key={post.url}
+            href={`/blog/${post.url}`}
+          >
             <p className="text-lg">{post.title}</p>
-            <div className="flex gap-2 items-center mb-4 md:mb-6 text-sm">
-              <time className="font-mono text-neutral-500 shrink-0">
-                {post.date}
-              </time>
-              <div className="bg-neutral-800 w-full h-[0.05rem]" />
-            </div>
+            <time className="font-mono">{post.date}</time>
           </Link>
         ))}
     </main>

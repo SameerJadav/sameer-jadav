@@ -134,7 +134,7 @@ date: '2022-02-22'
 **Contentlayer makes working with content easy.** It is a content preprocessor that validates and transforms your content into type-safe JSON you can easily import into your application.
 ```
 
-**_Important note: Make sure to start the development environment now. Doing so will generate a .contentlayer directory containing all of our content in .json format. This means that our content has been transformed into data, making it easier to manage._**
+> Important note: Make sure to start the development environment now. Doing so will generate a .contentlayer directory containing all of our content in .json format. This means that our content has been transformed into data, making it easier to manage.
 
 ### Blogs page
 

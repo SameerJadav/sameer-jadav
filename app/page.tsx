@@ -18,16 +18,16 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="p-6">
-      <h1 className="mb-6 text-2xl md:text-4xl font-semibold">Sameer Jadav</h1>
-      <h2 className="mb-2">
+    <main className="p-4">
+      <h1 className="md:mb-6 mb-4 text-4xl md:text-6xl">Sameer Jadav</h1>
+      <h2 className="md:mb-2">
         Hey there, I'm <span className="font-medium text-white">Sameer</span> -
         a front-end developer with a passion for web development. I enjoy
         writing about programming, productivity, and health in my free time.
         Currently, I work as a freelancer, building websites and web
         applications for clients.
       </h2>
-      <div className="flex gap-4 md:gap-6 items-center mb-6">
+      <div className="flex gap-4 md:gap-6 items-center mb-6 md:mb-8">
         <a
           className="flex gap-1 hover:text-white items-center"
           href="https://twitter.com/SameerJadav_"
@@ -57,18 +57,18 @@ export default function Home() {
         </a>
       </div>
       <div>
-        <p className="text-xl text-white mb-6">Selectd Posts</p>
+        <h2 className="text-xl text-white mb-4 font-kaisei md:text-2xl md:mb-6">
+          Selectd Posts
+        </h2>
         <div>
           <Link
-            className="hover:text-white"
+            className="hover:text-white mb-4 md:mb-6"
             href="/blog/blog-website-with-nextjs-and-contentlayer"
           >
             <p>
               Simplifying Your Content Management with Next.js and Contentlayer
             </p>
-            <time className="font-mono text-neutral-500 shrink-0 mb-4 md:mb-6 text-sm">
-              February 17, 2023
-            </time>
+            <time className="font-mono">February 17, 2023</time>
           </Link>
         </div>
       </div>

@@ -34,18 +34,13 @@ export default async function Blog({ params }) {
   return (
     <article className="p-4">
       <header>
-        <h1 className="text-2xl md:text-3xl font-bold mb-4">
+        <time className="font-mono text-lg">{post.date}</time>
+        <h1 className="text-4xl md:text-6xl my-4 md:my-6 prose-h1:font-kaisei">
           <Balancer>{post.title}</Balancer>
         </h1>
-        <div className="flex gap-2 items-center mb-6 md:mb-8 text-sm">
-          <time className="font-mono text-white bg-neutral-800 p-2 shrink-0 rounded-md">
-            {post.date}
-          </time>
-          <div className="bg-neutral-800 w-full h-[0.05rem]" />
-        </div>
       </header>
       <section
-        className="prose prose-invert prose-p:text-neutral-300"
+        className="prose prose-invert prose-p:text-neutral-300 prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:font-normal prose-h2:font-kaisei prose-quoteless"
         dangerouslySetInnerHTML={{ __html: post.body.html }}
       />
     </article>
