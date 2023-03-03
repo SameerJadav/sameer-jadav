@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const navItems = {
   '/': {
@@ -20,7 +21,17 @@ const navItems = {
 function Logo() {
   return (
     <Link href="/">
-      <Image src="/logo-n.svg" alt="logo" width={50} height={50} />
+      <motion.div
+        initial={{ y: 25, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 0.5,
+          type: 'spring',
+          stiffness: 30,
+        }}
+      >
+        <Image src="/logo-n.svg" alt="logo" width={50} height={50} />
+      </motion.div>
     </Link>
   );
 }
@@ -53,7 +64,7 @@ export default function Navbar() {
                     'transition-all hover:text-white text-xl py-1 px-2 ml-2',
                     {
                       'text-neutral-400 capitalize': !isActive,
-                      'text-white bg-neutral-900 rounded-lg font-medium capitalize transition-all duration-300 ease-in-out':
+                      'text-white bg-neutral-800 rounded-lg font-medium capitalize transition-all duration-300 ease-in-out':
                         isActive,
                     }
                   )}
