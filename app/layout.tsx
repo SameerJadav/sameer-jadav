@@ -1,4 +1,5 @@
 import './globals.css';
+import Sidebar from 'components/Sidebar';
 
 export const metadata = {
   title: {
@@ -32,7 +33,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-[#010101] text-neutral-400 font-inter">
-      <body className="antialiased max-w-2xl mx-auto mt-8 md:mt-20">
+      <body className="antialiased max-w-4xl flex flex-col lg:flex-row mx-auto mt-8 md:mt-20">
+        <Sidebar />
         {children}
       </body>
     </html>
