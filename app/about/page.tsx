@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import Image from 'next/image';
-import { ArrowIcon, GitHubIcon, TwitterIcon } from '../../components/icons';
+import Image from "next/image";
+import { ArrowIcon, GitHubIcon, TwitterIcon } from "../../components/icons";
 
 export default function AboutMe() {
   return (
@@ -9,7 +9,7 @@ export default function AboutMe() {
       <div>
         <div>
           <h2 className="mb-6">
-            Hey, I am{' '}
+            Hey, I am{" "}
             <span className="font-medium text-white">Sameer Jadav</span>, a
             front-end developer who also dabbles in design.
           </h2>

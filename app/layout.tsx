@@ -1,10 +1,10 @@
-import './globals.css';
-import Sidebar from 'components/Sidebar';
+import "./globals.css";
+import Sidebar from "components/Sidebar";
 
 export const metadata = {
   title: {
-    default: 'Sameer Jadav',
-    template: '%s | Sameer Jadav',
+    default: "Sameer Jadav",
+    template: "%s | Sameer Jadav",
   },
   robots: {
     index: true,
@@ -12,17 +12,17 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   twitter: {
-    title: 'Sameer Jadav',
-    card: 'summary_large_image',
+    title: "Sameer Jadav",
+    card: "summary_large_image",
   },
   icons: {
-    shortcut: '/favicon.ico',
+    shortcut: "/favicon.ico",
   },
 };
 
@@ -32,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="bg-[#010101] text-neutral-400 font-inter">
-      <body className="antialiased max-w-4xl flex flex-col lg:flex-row mx-auto mt-8 md:mt-20">
+    <html lang="en" className="bg-[#010101] font-inter text-neutral-400">
+      <body className="mx-auto mt-8 flex max-w-4xl flex-col antialiased md:mt-20 lg:flex-row">
         <Sidebar />
         {children}
       </body>

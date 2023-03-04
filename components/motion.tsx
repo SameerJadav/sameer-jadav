@@ -14,7 +14,7 @@ export const draw = {
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { delay: 0.5, type: 'spring', duration: 1.5, bounce: 0 },
+        pathLength: { delay: 0.5, type: "spring", duration: 1.5, bounce: 0 },
         opacity: { delay: 0.5, duration: 0.01 },
       },
     };

@@ -1,29 +1,29 @@
-import Link from 'next/link';
-import { allPosts } from 'contentlayer/generated';
+import Link from "next/link";
+import { allPosts } from "contentlayer/generated";
 
 export const metadata = {
-  title: 'Blog',
+  title: "Blog",
   description:
-    'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+    "Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.",
   openGraph: {
-    title: 'Blog',
+    title: "Blog",
     description:
-      'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
-    siteName: 'Sameer Jadav',
-    locale: 'en-US',
-    type: 'website',
+      "Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.",
+    siteName: "Sameer Jadav",
+    locale: "en-US",
+    type: "website",
   },
   twitter: {
-    title: 'Blog',
+    title: "Blog",
     description:
-      'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+      "Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.",
   },
 };
 
 export default function Home() {
   return (
     <main className="p-4">
-      <h1 className="mb-6 text-6xl">Blogs</h1>
+      <h1 className="mb-6 text-4xl md:text-6xl">Blogs</h1>
       {allPosts
         .sort((a, b) => {
           if (new Date(a.date) > new Date(b.date)) {
@@ -33,7 +33,7 @@ export default function Home() {
         })
         .map((post) => (
           <Link
-            className="hover:text-white mb-4 md:mb-6"
+            className="mb-4 hover:text-white md:mb-6"
             key={post.url}
             href={`/blog/${post.url}`}
           >

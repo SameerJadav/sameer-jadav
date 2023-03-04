@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import clsx from 'clsx';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { icon, draw } from 'components/motion';
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { icon, draw } from "components/motion";
 
 const navItems = {
-  '/': {
-    name: 'home',
+  "/": {
+    name: "home",
   },
-  '/about': {
-    name: 'about',
+  "/about": {
+    name: "about",
   },
-  '/blog': {
-    name: 'blog',
+  "/blog": {
+    name: "blog",
   },
 };
 
@@ -52,19 +52,19 @@ function Logo() {
 }
 
 export default function Navbar() {
-  let pathname = usePathname() || '/';
-  if (pathname.includes('/blog/')) {
-    pathname = '/blog';
+  let pathname = usePathname() || "/";
+  if (pathname.includes("/blog/")) {
+    pathname = "/blog";
   }
 
   return (
-    <aside className="lg:w-[150px] lg:flex-shrink-0 lg:mt-7">
-      <div className="lg:sticky lg:top-20 flex justify-between items-center lg:block">
-        <div className="lg:ml-5 mb-2 px-4 lg:px-0 lg:mb-8 space-y-10 flex flex-col lg:flex-row items-start ">
+    <aside className="lg:mt-7 lg:w-[150px] lg:flex-shrink-0">
+      <div className="flex items-center justify-between lg:sticky lg:top-20 lg:block">
+        <div className="mb-2 flex flex-col items-start space-y-10 px-4 lg:ml-5 lg:mb-8 lg:flex-row lg:px-0 ">
           <Logo />
         </div>
         <motion.nav
-          className="flex flex-row lg:flex-col items-start relative px-4 lg:px-0 pb-0 fade lg:relative"
+          className="fade relative flex flex-row items-start px-4 pb-0 lg:relative lg:flex-col lg:px-0"
           id="nav"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -74,7 +74,7 @@ export default function Navbar() {
             ease: [0, 0.71, 0.2, 1.01],
           }}
         >
-          <div className="flex flex-row lg:flex-col gap-1 lg:pr-10 mb-2 mt-2 lg:mt-0">
+          <div className="mb-2 mt-2 flex flex-row gap-1 lg:mt-0 lg:flex-col lg:pr-10">
             {Object.entries(navItems).map(([path, { name }]) => {
               const isActive = path === pathname;
 
@@ -83,10 +83,10 @@ export default function Navbar() {
                   key={path}
                   href={path}
                   className={clsx(
-                    'transition-all hover:text-white text-xl py-1 px-2 ml-2',
+                    "ml-2 py-1 px-2 text-xl transition-all hover:text-white",
                     {
-                      'text-neutral-400 capitalize': !isActive,
-                      'text-white bg-neutral-800 rounded-lg capitalize transition-all duration-300 ease-in-out':
+                      "capitalize text-neutral-400": !isActive,
+                      "rounded-lg bg-neutral-800 capitalize text-white transition-all duration-300 ease-in-out":
                         isActive,
                     }
                   )}

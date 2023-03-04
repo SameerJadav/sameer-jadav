@@ -1,25 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
-import { ArrowIcon } from 'components/icons';
-import Link from 'next/link';
+import { ArrowIcon } from "components/icons";
+import Link from "next/link";
 
 export const metadata = {
-  description: 'I am a front-end web developer with a passion for writing.',
+  description: "I am a front-end web developer with a passion for writing.",
   openGraph: {
-    title: 'Sameer Jadav',
-    description: 'I am a front-end web developer with a passion for writing.',
-    siteName: 'Sameer Jadav',
-    locale: 'en-US',
-    type: 'website',
+    title: "Sameer Jadav",
+    description: "I am a front-end web developer with a passion for writing.",
+    siteName: "Sameer Jadav",
+    locale: "en-US",
+    type: "website",
   },
   twitter: {
-    description: 'I am a front-end web developer with a passion for writing.',
+    description: "I am a front-end web developer with a passion for writing.",
   },
 };
 
 export default function Home() {
   return (
     <main className="p-4">
-      <h1 className="md:mb-6 mb-4 text-4xl md:text-6xl">Sameer Jadav</h1>
+      <h1 className="mb-4 text-4xl md:mb-6 md:text-6xl">Sameer Jadav</h1>
       <h2 className="md:mb-2">
         Hey there, I'm <span className="font-medium text-white">Sameer</span> -
         a front-end developer with a passion for web development. I enjoy
@@ -27,9 +27,9 @@ export default function Home() {
         Currently, I work as a freelancer, building websites and web
         applications for clients.
       </h2>
-      <div className="flex gap-4 md:gap-6 items-center mb-6 md:mb-8">
+      <div className="mb-6 flex items-center gap-4 md:mb-8 md:gap-6">
         <a
-          className="flex gap-1 hover:text-white items-center"
+          className="flex items-center gap-1 hover:text-white"
           href="https://twitter.com/SameerJadav_"
           target="_blank"
           rel="noopener noreferrer"
@@ -38,7 +38,7 @@ export default function Home() {
           <p>Twitter</p>
         </a>
         <a
-          className="flex gap-1 hover:text-white items-center"
+          className="flex items-center gap-1 hover:text-white"
           href="https://github.com/SameerJadav"
           target="_blank"
           rel="noopener noreferrer"
@@ -47,7 +47,7 @@ export default function Home() {
           <p>Github</p>
         </a>
         <a
-          className="flex gap-1 hover:text-white items-center"
+          className="flex items-center gap-1 hover:text-white"
           href="https://www.linkedin.com/in/sameer-jadav"
           target="_blank"
           rel="noopener noreferrer"
@@ -57,12 +57,12 @@ export default function Home() {
         </a>
       </div>
       <div>
-        <h2 className="text-xl text-white mb-4 font-kaisei md:text-2xl md:mb-6">
+        <h2 className="mb-4 font-kaisei text-xl text-white md:mb-6 md:text-2xl">
           Selectd Posts
         </h2>
         <div>
           <Link
-            className="hover:text-white mb-4 md:mb-6"
+            className="mb-4 hover:text-white md:mb-6"
             href="/blog/blog-website-with-nextjs-and-contentlayer"
           >
             <p>
