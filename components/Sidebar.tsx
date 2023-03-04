@@ -63,9 +63,16 @@ export default function Navbar() {
         <div className="lg:ml-5 mb-2 px-4 lg:px-0 lg:mb-8 space-y-10 flex flex-col lg:flex-row items-start ">
           <Logo />
         </div>
-        <nav
+        <motion.nav
           className="flex flex-row lg:flex-col items-start relative px-4 lg:px-0 pb-0 fade lg:relative"
           id="nav"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
         >
           <div className="flex flex-row lg:flex-col gap-1 lg:pr-10 mb-2 mt-2 lg:mt-0">
             {Object.entries(navItems).map(([path, { name }]) => {
@@ -89,7 +96,7 @@ export default function Navbar() {
               );
             })}
           </div>
-        </nav>
+        </motion.nav>
       </div>
     </aside>
   );

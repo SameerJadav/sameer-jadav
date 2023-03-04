@@ -19,9 +19,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="p-4">
-      <h1 className="md:mb-6 md:text-red-500 mb-4 text-4xl md:text-6xl">
-        Sameer Jadav
-      </h1>
+      <h1 className="md:mb-6 mb-4 text-4xl md:text-6xl">Sameer Jadav</h1>
       <h2 className="md:mb-2">
         Hey there, I'm <span className="font-medium text-white">Sameer</span> -
         a front-end developer with a passion for web development. I enjoy
