@@ -1,11 +1,11 @@
 ---
-title: 'Simplifying Your Content Management with Next.js and Contentlayer'
-description: ''
-keywords: 'Next.js 13, Contentlayer'
-date: 'February 17, 2023'
+title: "Simplifying Your Content Management with Next.js and Contentlayer"
+description: "Learn how to simplify your content management with Contentlayer and Next.js 13. Contentlayer is a powerful tool that automatically converts content into data, making it easy to work with .md and .mdx files. This post will guide you through the process of setting up a Next.js app with server components, installing and configuring Contentlayer, and defining Post schema. By following these steps, you can streamline your content management and say goodbye to the tedious task of manually converting content into data."
+keywords: "Next.js 13, Contentlayer, blog website, content management, content preprocessor, content management system, content management tool, tailwindcss, typescript, nextjs 13 + contentlayer, javascript"
+date: "February 17, 2023"
 ---
 
-Content management can be a tedious and time-consuming task, but what if I told you that there's a tool that can simplify the process and make it a breeze? Introducing Contentlayer, a powerful tool that converts your content into data and makes it easy to work with `.md` and `.mdx` files. With Contentlayer, all you need to do is install and configure it, and you can start writing in your preferred file format. The best part? Contentlayer automatically adds types to your data, ensuring that your content is always type-safe. Say goodbye to the hassle of content management and hello to a more streamlined process with Contentlayer and Next.js.
+Content management can be a tedious and time-consuming task, but what if I told you that there’s a tool that can simplify the process and make it a breeze? Introducing Contentlayer, a powerful tool that converts your content into data and makes it easy to work with `.md` and `.mdx` files. With Contentlayer, all you need to do is install and configure it, and you can start writing in your preferred file format. The best part? Contentlayer automatically adds types to your data, ensuring that your content is always type-safe. Say goodbye to the hassle of content management and hello to a more streamlined process with Contentlayer and Next.js.
 
 ## Setting up a Next.js App
 
@@ -39,10 +39,8 @@ pnpm add contentlayer next-contentlayer
 
 To integrate contentlayer into `next dev` and `next build` process we need to wrap `nextConfig` with `withContentlayer` method.
 
-```js
-// next.config.js
-
-const { withContentlayer } = require('next-contentlayer');
+```javascript
+const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -56,7 +54,7 @@ module.exports = withContentlayer(nextConfig);
 
 Additionally, we need to update our tsconfig.json or jsconfig.json file with the following changes:
 
-```ts
+```typescript
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -72,38 +70,40 @@ Additionally, we need to update our tsconfig.json or jsconfig.json file with the
 
 Let's start by introducing the importance of defining a Post schema for our blog. This schema will help contentlayer convert our content into data that can be used on our blog. To create this schema, we need to create a new file called contentlayer.config.js in the root of our project and include the following code:
 
-```js
-// contentlayer.config.js
-
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+```javascript
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
 const Post = defineDocumentType(() => ({
-  name: 'Post',
+  name: "Post",
   filePathPattern: `**/*.md`,
   fields: {
     title: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     description: {
-      type: 'string',
+      type: "string",
+      required: true,
+    },
+    keywords: {
+      type: "string",
       required: true,
     },
     date: {
-      type: 'string',
+      type: "string",
       required: true,
     },
   },
   computedFields: {
     url: {
-      type: 'string',
+      type: "string",
       resolve: (doc) => doc._raw.flattenedPath,
     },
   },
 }));
 
 export default makeSource({
-  contentDirPath: 'posts',
+  contentDirPath: "posts",
   documentTypes: [Post],
 });
 ```
@@ -125,10 +125,10 @@ For example, here is a sample post titled what-is-contentlayer.md located in the
 
 ```markdown
 ---
-title: 'What is Contentlayer?'
-description: 'Demo description'
-keywords: 'content, preprocessor, type-safe'
-date: '2022-02-22'
+title: "What is Contentlayer?"
+description: "Demo description"
+keywords: "content, preprocessor, type-safe"
+date: "2022-02-22"
 ---
 
 **Contentlayer makes working with content easy.** It is a content preprocessor that validates and transforms your content into type-safe JSON you can easily import into your application.
@@ -141,32 +141,29 @@ date: '2022-02-22'
 To showcase all our blog posts, we will replace the homepage (`app/page.tsx`) with the following code:
 
 ```tsx
-import Link from 'next/link';
-import { allPosts } from 'contentlayer/generated';
+import Link from "next/link";
+import { allPosts } from "contentlayer/generated";
 
 export const metadata = {
-  title: 'Blog',
-  description:
-    'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+  title: "Blog",
+  description: "Discover insights, tips, and techniques on web development.",
   openGraph: {
-    title: 'Blog',
-    description:
-      'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
-    siteName: 'Sameer Jadav',
-    locale: 'en-US',
-    type: 'website',
+    title: "Blog",
+    description: "Discover insights, tips, and techniques on web development.",
+    siteName: "Blog Website",
+    locale: "en-US",
+    type: "website",
   },
   twitter: {
-    title: 'Blog',
-    description:
-      'Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.',
+    title: "Blog",
+    description: "Discover insights, tips, and techniques on web development.",
   },
 };
 
 export default function Home() {
   return (
-    <main className="p-4">
-      <h1 className="mb-6 text-4xl font-bold">Blog</h1>
+    <main>
+      <h1>Blog</h1>
       {allPosts
         .sort((a, b) => {
           if (new Date(a.date) > new Date(b.date)) {
@@ -176,7 +173,7 @@ export default function Home() {
         })
         .map((post) => (
           <Link key={post.url} href={`/blog/${post.url}`}>
-            <p className="text-lg">{post.title}</p>
+            <p>{post.title}</p>
           </Link>
         ))}
     </main>
@@ -193,8 +190,7 @@ Note that we use new Date(b.date) - new Date(a.date) instead of an if statement 
 To render each blog post in its own page, we need to create a slug page. This page will use a specific URL format to identify the post. We can create a file called [slug]/page.tsx and place the following content in it:
 
 ```tsx
-import Balancer from 'react-wrap-balancer';
-import { allPosts } from 'contentlayer/generated';
+import { allPosts } from "contentlayer/generated";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -211,9 +207,9 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post.title,
       description: post.description,
-      siteName: 'Sameer Jadav',
-      locale: 'en-US',
-      type: 'article',
+      siteName: "Blog Website",
+      locale: "en-US",
+      type: "article",
     },
     twitter: {
       title: post.title,
@@ -228,15 +224,10 @@ export default async function Blog({ params }) {
   return (
     <article>
       <header>
-        <h1>
-          <Balancer>{post.title}</Balancer>
-        </h1>
-        <time className="font-mono text-gray-400">{post.date}</time>
+        <h1>{post.title}</h1>
+        <time>{post.date}</time>
       </header>
-      <section
-        className="prose prose-invert prose-p:text-neutral-100"
-        dangerouslySetInnerHTML={{ __html: post.body.html }}
-      />
+      <section dangerouslySetInnerHTML={{ __html: post.body.html }} />
     </article>
   );
 }
