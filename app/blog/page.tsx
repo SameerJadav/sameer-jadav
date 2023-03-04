@@ -1,7 +1,8 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts } from "contentlayer/generated";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog",
   description:
     "Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.",
@@ -9,9 +10,7 @@ export const metadata = {
     title: "Blog",
     description:
       "Discover insights, tips, and techniques on front-end web development. Join me on my journey to create exceptional user-friendly websites.",
-    siteName: "Sameer Jadav",
-    locale: "en-US",
-    type: "website",
+    url: "https://sameerjadav.me/blog",
   },
   twitter: {
     title: "Blog",

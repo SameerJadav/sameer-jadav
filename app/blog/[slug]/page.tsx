@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { allPosts } from "contentlayer/generated";
 
@@ -7,8 +9,14 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({
+  params,
+}): Promise<Metadata | undefined> {
   const post = allPosts.find((post) => post.url === params.slug);
+
+  if (!post) {
+    return;
+  }
 
   return {
     title: post.title,
@@ -17,8 +25,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post.title,
       description: post.description,
-      siteName: "Sameer Jadav",
-      locale: "en-US",
+      url: `https://sameerjadav.me/blog/${post.url}`,
       type: "article",
     },
     twitter: {
@@ -30,6 +37,10 @@ export async function generateMetadata({ params }) {
 
 export default async function Blog({ params }) {
   const post = allPosts.find((post) => post.url === params.slug);
+
+  if (!post) {
+    notFound();
+  }
 
   return (
     <article className="p-4">

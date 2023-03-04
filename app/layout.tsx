@@ -1,10 +1,22 @@
+import type { Metadata } from "next";
 import "./globals.css";
 import Sidebar from "components/Sidebar";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: "Sameer Jadav",
     template: "%s | Sameer Jadav",
+  },
+  description:
+    "I'm Sameer Jadav, a front-end developer and writer. I write about various topics such as web development, productivity, and health.",
+  openGraph: {
+    title: "Sameer Jadav",
+    description:
+      "I'm Sameer Jadav, a front-end developer and writer. I write about various topics such as web development, productivity, and health.",
+    url: "https://sameerjadav.me",
+    siteName: "Sameer Jadav",
+    locale: "en-US",
+    type: "website",
   },
   robots: {
     index: true,
@@ -19,6 +31,8 @@ export const metadata = {
   },
   twitter: {
     title: "Sameer Jadav",
+    description:
+      "I'm Sameer Jadav, a front-end developer and writer. I write about various topics such as web development, productivity, and health.",
     card: "summary_large_image",
   },
   icons: {

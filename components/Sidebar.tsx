@@ -3,9 +3,8 @@
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { icon, draw } from "components/motion";
+import { draw } from "components/motion";
 
 const navItems = {
   "/": {

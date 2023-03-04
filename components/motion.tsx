@@ -1,12 +1,3 @@
-export const icon = {
-  hidden: {
-    pathLength: 0,
-  },
-  visible: {
-    pathLength: 1,
-  },
-};
-
 export const draw = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: () => {
