@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="bg-[#010101] font-inter text-neutral-400">
+    <html lang="en" className="bg-[#161616] font-inter text-zinc-300">
       <body className="mx-auto mt-8 flex max-w-4xl flex-col antialiased md:mt-20 lg:flex-row">
         <Sidebar />
         {children}

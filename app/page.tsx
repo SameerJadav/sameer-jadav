@@ -43,7 +43,7 @@ export default function Home() {
         </a>
       </div>
       <div>
-        <h2 className="mb-4 font-kaisei text-xl text-white md:mb-6 md:text-2xl">
+        <h2 className="mb-4 font-serif text-xl text-white md:mb-6 md:text-2xl">
           Selectd Posts
         </h2>
         <div>

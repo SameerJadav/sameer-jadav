@@ -29,7 +29,7 @@ export default function AboutMe() {
         <div>
           <div className="flex flex-col gap-2 sm:flex-row">
             <a
-              className="rounded-xl transition-all hover:scale-[.99] hover:bg-neutral-900/90 sm:flex-1"
+              className="rounded-xl transition-all hover:scale-[.99] hover:bg-neutral-800/60 sm:flex-1"
               href="https://twitter.com/SameerJadav_"
               target="_blank"
               rel="noopener noreferrer"
@@ -45,7 +45,7 @@ export default function AboutMe() {
               </div>
             </a>
             <a
-              className="rounded-xl transition-all hover:scale-[.99] hover:bg-neutral-900/90 sm:flex-1"
+              className="rounded-xl transition-all hover:scale-[.99] hover:bg-neutral-800/60 sm:flex-1"
               href="https://github.com/SameerJadav"
               target="_blank"
               rel="noopener noreferrer"
@@ -61,7 +61,7 @@ export default function AboutMe() {
               </div>
             </a>
             <a
-              className="rounded-xl transition-all hover:scale-[.99] hover:bg-neutral-900/90 sm:flex-1"
+              className="rounded-xl transition-all hover:scale-[.99] hover:bg-neutral-800/60 sm:flex-1"
               href="mailto:sameerjadav001@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
