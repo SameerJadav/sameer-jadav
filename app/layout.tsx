@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "components/Sidebar";
+import clsx from "clsx";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -46,8 +53,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="bg-[#161616] font-inter text-zinc-300">
-      <body className="mx-auto mt-8 flex max-w-4xl flex-col antialiased md:mt-20 lg:flex-row">
+    <html
+      lang="en"
+      className={clsx("bg-[#161616] text-zinc-300", inter.className)}
+    >
+      <body className="mx-auto mt-8 flex max-w-4xl flex-col antialiased lg:flex-row">
         <Sidebar />
         {children}
       </body>
