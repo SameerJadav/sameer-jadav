@@ -25,6 +25,10 @@ body::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
+.prose {
+  max-width: 68ch;
+}
+
 .prose .anchor {
   @apply invisible absolute no-underline;
 
