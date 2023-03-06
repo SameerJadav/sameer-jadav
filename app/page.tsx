@@ -5,7 +5,9 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="p-4">
-      <h1 className="mb-4 text-4xl md:mb-6 md:text-6xl">Sameer Jadav</h1>
+      <h1 className="mb-4 text-4xl md:mb-6 md:text-6xl lg:-mt-6">
+        Sameer Jadav
+      </h1>
       <h2 className="md:mb-2">
         Hey there, I'm <span className="font-medium text-white">Sameer</span> -
         a front-end developer with a passion for web development. I enjoy

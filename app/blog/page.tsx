@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="p-4">
-      <h1 className="mb-6 text-4xl md:text-6xl">Blogs</h1>
+      <h1 className="mb-6 text-4xl md:text-6xl lg:-mt-6">Blogs</h1>
       {allPosts
         .sort((a, b) => {
           if (new Date(a.date) > new Date(b.date)) {

@@ -57,7 +57,7 @@ export default function RootLayout({
       lang="en"
       className={clsx("bg-[#161616] text-zinc-300", inter.className)}
     >
-      <body className="mx-auto mt-8 flex max-w-4xl flex-col antialiased lg:flex-row">
+      <body className="mx-auto mt-8 flex max-w-4xl flex-col antialiased lg:mt-20 lg:flex-row">
         <Sidebar />
         {children}
       </body>

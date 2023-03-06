@@ -5,7 +5,7 @@ import { ArrowIcon, GitHubIcon, TwitterIcon } from "../../components/icons";
 export default function AboutMe() {
   return (
     <main className="p-4">
-      <h1 className="mb-6 text-4xl md:text-6xl">About Me</h1>
+      <h1 className="mb-6 text-4xl md:text-6xl lg:-mt-6">About Me</h1>
       <div>
         <div>
           <h2 className="mb-6">

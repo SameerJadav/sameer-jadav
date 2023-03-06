@@ -57,7 +57,7 @@ export default function Navbar() {
   }
 
   return (
-    <aside className="lg:mt-7 lg:w-[150px] lg:flex-shrink-0">
+    <aside className="lg:w-[150px] lg:flex-shrink-0">
       <div className="flex items-center justify-between lg:sticky lg:top-20 lg:block">
         <div className="mb-2 flex flex-col items-start space-y-10 px-4 lg:ml-5 lg:mb-8 lg:flex-row lg:px-0 ">
           <Logo />
